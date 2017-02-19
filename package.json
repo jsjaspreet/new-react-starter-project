@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:server": "webpack --config server.webpack.js"
+    "build": "npm run clean && npm run build:client && npm run build:server",
+    "build:server": "webpack --config server.webpack.js",
+    "build:client": "webpack --config client.webpack.js",
+    "clean": "rimraf build"
   },
   "keywords": [],
   "author": "",

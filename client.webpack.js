@@ -4,12 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackMd5Hash = require('webpack-md5-hash')
 
 const vendor_libs = [
-  'react', 'react-dom', 'react-dom', 'react-router-dom'
+  'react', 'react-dom', 'react-router-dom'
 ]
 
 module.exports = {
   entry: {
-    bundle: './src/index.js',
+    bundle: './src/client/index.js',
     vendor: vendor_libs
   },
   output: {
