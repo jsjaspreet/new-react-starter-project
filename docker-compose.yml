@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  postgres_starter:
+    image: postgres:starter
+    container_name: "postgres-starter"
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=links
+
