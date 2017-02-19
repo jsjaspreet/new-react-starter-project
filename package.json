@@ -6,8 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run clean && npm run build:client && npm run build:server",
+    "build:prod": "NODE_ENV=production && npm run clean && npm run build:prod-client && npm run build:server",
     "build:server": "webpack --config server.webpack.js",
     "build:client": "webpack --config client.webpack.js",
+    "build:prod-client": "webpack -p --config prod.client.webpack.js",
     "clean": "rimraf build"
   },
   "keywords": [],
@@ -16,6 +18,8 @@
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.23.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.1.8",
     "babel-preset-react": "^6.23.0",

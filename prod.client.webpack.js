@@ -40,6 +40,15 @@ module.exports = {
       template: 'src/server/index.html',
       title: 'Starter Project',
       favicon: './favicon.ico'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
     })
   ]
 }
