@@ -6,10 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run clean && npm run build:client && npm run build:server",
-    "build:prod": "NODE_ENV=production && npm run clean && npm run build:prod-client && npm run build:server",
+    "build:prod": "export NODE_ENV=production && npm run clean && npm run build:client-prod && npm run build:server",
     "build:server": "webpack --config server.webpack.js",
     "build:client": "webpack --config client.webpack.js",
-    "build:prod-client": "webpack -p --config prod.client.webpack.js",
+    "build:client-prod": "export NODE_ENV=production && webpack -p --config client.webpack.js",
+    "dev": "npm run clean && export NODE_ENV=dev && webpack-dev-server --config client.webpack.js",
     "clean": "rimraf build"
   },
   "keywords": [],
@@ -28,6 +29,7 @@
     "rimraf": "^2.6.0",
     "style-loader": "^0.13.1",
     "webpack": "2",
+    "webpack-dev-server": "^2.4.0",
     "webpack-md5-hash": "^0.0.5",
     "webpack-node-externals": "^1.5.4"
   },

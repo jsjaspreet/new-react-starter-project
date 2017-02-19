@@ -7,6 +7,32 @@ const vendor_libs = [
   'react', 'babel-polyfill', 'react-dom', 'react-router-dom'
 ]
 
+let plugins = [
+  new webpack.optimize.CommonsChunkPlugin({
+    names: ['vendor', 'manifest']
+  }),
+  new WebpackMd5Hash(),
+  new HtmlWebpackPlugin({
+    template: 'src/server/index.html',
+    title: 'Starter Project',
+    favicon: './favicon.ico'
+  })
+]
+
+if (process.env.NODE_ENV === 'production') {
+  plugins = [...plugins,
+             new webpack.DefinePlugin({
+               'process.env': {
+                 NODE_ENV: JSON.stringify('production')
+               }
+             }),
+             new webpack.LoaderOptionsPlugin({
+               minimize: true,
+               debug: false
+             })]
+}
+
+
 module.exports = {
   entry: {
     bundle: ['babel-polyfill', './src/client/index.js'],
@@ -15,7 +41,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[chunkhash].[id].[name].js',
-    publicPath: '/build/'
+    publicPath: process.env.NODE_ENV === 'dev' ? '' : '/build/'
   },
   module: {
     rules: [
@@ -31,15 +57,5 @@ module.exports = {
     ]
   },
   devtool: 'cheap-module-source-map',
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest']
-    }),
-    new WebpackMd5Hash(),
-    new HtmlWebpackPlugin({
-      template: 'src/server/index.html',
-      title: 'Starter Project',
-      favicon: './favicon.ico'
-    })
-  ]
+  plugins: plugins
 }
