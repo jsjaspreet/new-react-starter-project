@@ -1,7 +1,6 @@
 import express from 'express'
 import { resolve } from 'path'
-import axios from 'axios'
-import graphqlHTTP from 'express-graphql'
+import router from './router'
 
 const nodeEnv = process.env.NODE_ENV || "development"
 const port = process.env.PORT || "9090"
@@ -9,6 +8,8 @@ const port = process.env.PORT || "9090"
 console.log(`Running in ${nodeEnv}`)
 
 const app = express()
+
+app.use(router)
 
 // static
 const maxAge = nodeEnv === "production" ? 1000 * 60 * 60 * 24 * 30 : 0
