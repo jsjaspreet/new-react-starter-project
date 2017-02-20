@@ -9,12 +9,16 @@ Web starter project powered by React, Node.js, GraphQL. Webpack2 config for both
 
 ## Running the app
 
+Install dependencies and bring up hot-reloading environment for quick development
+
 ```
 yarn
 npm run dev
 ```
 
 ## Postgres with Docker (for scaffolded graphql endpoints)
+
+Build the expected Docker container, bring it up using compose, and run bootstrap scripts for migrations
 
 ```
 cd postgres
