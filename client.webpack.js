@@ -57,5 +57,11 @@ module.exports = {
     ]
   },
   devtool: 'cheap-module-source-map',
-  plugins: plugins
+  plugins: plugins,
+  devServer: {
+    proxy: {
+      "/api": "http://localhost:9090",
+      "/graphql": "http://localhost:9090"
+    }
+  }
 }
