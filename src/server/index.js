@@ -1,4 +1,5 @@
 import express from 'express'
+import compression from 'compression'
 import { resolve } from 'path'
 import router from './router'
 
@@ -8,6 +9,7 @@ const port = process.env.PORT || "9090"
 console.log(`Running in ${nodeEnv}`)
 
 const app = express()
+app.use(compression())
 
 app.use(router)
 
