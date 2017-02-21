@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { testClass } from './style.css'
 import {
   BrowserRouter as Router,
   Route
@@ -30,7 +31,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}>
+        <button className={testClass} onClick={this.handleClick}>
           Click Me
         </button>
         <div>
