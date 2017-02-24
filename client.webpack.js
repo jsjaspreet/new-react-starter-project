@@ -60,6 +60,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   plugins: plugins,
   devServer: {
+    historyApiFallback: true,
     proxy: {
       "/api": "http://localhost:9090",
       "/graphql": "http://localhost:9090"
